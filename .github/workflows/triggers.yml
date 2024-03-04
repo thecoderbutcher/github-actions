@@ -1,0 +1,29 @@
+name: Triggers
+run-name: Three triggers trigstes
+on: 
+  push:
+    branches: ['main', 'aprendiendo-**']
+    paths: ['**.yml']
+  
+  pull_request:
+    types: [opened, labeled]
+    branches: ['aprendiendo-**']
+    paths: ['**.yml']
+  
+  schedule:
+    - cron: '30 8,20 * * *'
+
+jobs:
+  setup-node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Run index
+        run: node index.js
