@@ -1,0 +1,16 @@
+name: hola-mundo
+on:[push]
+jobs: 
+  setup-node
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup NodeJs
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+      name: Run index
+      run: node index.js
+        
+    
+    
+  
